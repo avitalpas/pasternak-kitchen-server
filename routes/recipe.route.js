@@ -8,4 +8,11 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err))
 })
 
+// get recipe by id
+router.route('/:id').get((req, res) => {
+    Recipe.findById(req.params.id)
+        .then(recipe => res.json(recipe))
+        .catch(err => res.status(400).json('Error: ' + err))
+})
+
 module.exports = router
